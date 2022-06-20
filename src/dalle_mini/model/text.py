@@ -10,7 +10,6 @@ from pathlib import Path
 
 import emoji
 import ftfy
-from huggingface_hub import hf_hub_download
 from unidecode import unidecode
 
 # based on wiki word occurrence
@@ -22,8 +21,8 @@ class HashtagProcessor:
     # Adapted from wordninja library
     # We use our wikipedia word count + a good heuristic to make it work
     def __init__(self):
-        wiki_word_frequency = hf_hub_download(
-            "dalle-mini/dalle-mini", filename="enwiki-words-frequency.txt"
+        wiki_word_frequency = (
+            "/opt/dalle-mini/data/dalle-mini/enwiki-words-frequency.txt"
         )
         self._word_cost = (
             l.split()[0]
